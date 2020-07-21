@@ -1,6 +1,13 @@
 #include "route_planner.h"
 #include <algorithm>
 
+bool RoutePlanner::checkInput(float start_x, float start_y, float end_x, float end_y){
+    if(start_x <0 || start_y <0 || end_x >100 || end_y >100 || end_x <0 || end_y <0 || start_x >100 || start_y >100) 
+        return true;
+    else
+        return false;
+}
+
 RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, float end_x, float end_y): m_Model(model) {
     // Convert inputs to percentage:
     start_x *= 0.01;
