@@ -56,16 +56,17 @@ int main(int argc, const char **argv)
     // user input for these values using std::cin. Pass the user input to the
     // RoutePlanner object below in place of 10, 10, 90, 90.
     std::cout << "Enter start and end coordinates in the format (0-100): start-x start-y end-x end-y" << std::endl;
-    float start_x = 0, start_y = 0, end_x = 0, end_y = 0;
-    std::cin >> start_x >> start_y >> end_x >> end_y;
+    float start_x = 1, start_y = 0, end_x = 1, end_y = 0;
+    std::string sx, sy, ex, ey;
+    std::cin >> sx >> sy >> ex >> ey;
     
-    while(RoutePlanner::checkInput(start_x, start_y, end_x, end_y)){
-        std::cout << "Your input data was: " << start_x << " " << start_y <<  " " << end_x <<  " " << end_y << "\n";
+    while(RoutePlanner::checkInput(sx, sy, ex, ey)){
+        std::cout << "Your input data was: " << sx << " " << sy <<  " " << ex <<  " " << ey << "\n";
         std::cout << "Please correct input data, ensure values are separated by 1 space \n"; 
         std::cout << "Example input is: '10 10 90 90'" << std::endl;
-        std::cin >> start_x >> start_y >> end_x >> end_y;
+        std::cin >> sx >> sy >> ex >> ey;
     }
-    std::cout << "Your input data is: " << start_x << " " << start_y <<  " " << end_x <<  " " << end_y << "\n";
+    std::cout << "Your input data is: " << sx << " " << sy <<  " " << ex <<  " " << ey << "\n";
 
     // Build Model.
     RouteModel model{osm_data};

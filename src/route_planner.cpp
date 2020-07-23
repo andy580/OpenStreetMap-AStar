@@ -1,11 +1,25 @@
 #include "route_planner.h"
 #include <algorithm>
 
-bool RoutePlanner::checkInput(float start_x, float start_y, float end_x, float end_y){
-    if(start_x <0 || start_y <0 || end_x >100 || end_y >100 || end_x <0 || end_y <0 || start_x >100 || start_y >100) 
+bool RoutePlanner::checkInput(string sx, string sy, string ex, string ey){
+    try {
+        float start_x = boost::lexical_cast<float>(sx);
+        float start_y = boost::lexical_cast<float>(sy);
+        float end_x = boost::lexical_cast<float>(ex);
+        float end_y = boost::lexical_cast<float>(ey);
+
+        if(start_x <0 || start_y <0 || end_x >100 || end_y >100 || end_x <0 || end_y <0 || start_x >100 || start_y >100){
+            std::cout << "Input data out of range" << std::endl;
+            return true;
+        }
+        else
+            return false;
+    } catch (std::exception e) {
+        std::cout << "Incorrect output may have included a character" << std::endl;
         return true;
-    else
-        return false;
+    }
+
+    
 }
 
 RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, float end_x, float end_y): m_Model(model) {
