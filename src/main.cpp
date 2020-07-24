@@ -66,7 +66,12 @@ int main(int argc, const char **argv)
         std::cout << "Example input is: '10 10 90 90'" << std::endl;
         std::cin >> sx >> sy >> ex >> ey;
     }
-    std::cout << "Your input data is: " << sx << " " << sy <<  " " << ex <<  " " << ey << "\n";
+    
+    start_x = boost::lexical_cast<float>(sx);
+    start_y = boost::lexical_cast<float>(sy);
+    end_x = boost::lexical_cast<float>(ex);
+    end_y = boost::lexical_cast<float>(ey);
+    std::cout << "Your input data is: " << start_x << " " << start_y <<  " " << end_x <<  " " << end_y << "\n";
 
     // Build Model.
     RouteModel model{osm_data};
