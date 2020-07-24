@@ -47,7 +47,7 @@ float RoutePlanner::CalculateHValue(RouteModel::Node const *node) {
 }
 
 
-// TODO 4: Complete the AddNeighbors method to expand the current node by adding all unvisited neighbors to the open list.
+// COMPLETE: Complete the AddNeighbors method to expand the current node by adding all unvisited neighbors to the open list.
 // Tips:
 // - Use the FindNeighbors() method of the current_node to populate current_node.neighbors vector with all the neighbors.
 // - For each node in current_node.neighbors, set the parent, the h_value, the g_value. 
@@ -73,7 +73,13 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 // - Return the pointer.
 
 RouteModel::Node *RoutePlanner::NextNode() {
+    
+    std::sort(open_list.begin(), open_list.end(), 
+    [](const RouteModel::Node *a, const RouteModel::Node *b) { return (a->g_value + a->h_value) > (b->g_value+b->h_value);});
 
+    auto lowestSum = open_list.end();
+    open_list.pop_back();
+    
 }
 
 
