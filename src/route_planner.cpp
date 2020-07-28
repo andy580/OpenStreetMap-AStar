@@ -78,9 +78,9 @@ RouteModel::Node *RoutePlanner::NextNode() {
     std::sort(open_list.begin(), open_list.end(), 
     [](const RouteModel::Node *a, const RouteModel::Node *b) { return (a->g_value + a->h_value) > (b->g_value+b->h_value);});
 
-    auto lowestSum = open_list.end();
+    auto lowestSum = open_list.back();
     open_list.pop_back();
-    
+    return lowestSum;
 }
 
 
